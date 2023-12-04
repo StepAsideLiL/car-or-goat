@@ -11,11 +11,13 @@ export const CardContainer1 = ({ cardValue }: { cardValue: number }) => {
     state.selectedCard,
     state.setSeletedCard,
   ]);
+  const setItem = useStore((state) => state.setSelectedItem);
 
   const handleClick = () => {
     if (stage === 0 || stage === 3) {
       if (!show) {
         setSelected(0);
+        setItem(cardValue);
       }
     }
   };
@@ -36,11 +38,13 @@ export const CardContainer2 = ({ cardValue }: { cardValue: number }) => {
     state.selectedCard,
     state.setSeletedCard,
   ]);
+  const setItem = useStore((state) => state.setSelectedItem);
 
   const handleClick = () => {
     if (stage === 0 || stage === 3) {
       if (!show) {
         setSelected(1);
+        setItem(cardValue);
       }
     }
   };
@@ -61,11 +65,13 @@ export const CardContainer3 = ({ cardValue }: { cardValue: number }) => {
     state.selectedCard,
     state.setSeletedCard,
   ]);
+  const setItem = useStore((state) => state.setSelectedItem);
 
   const handleClick = () => {
     if (stage === 0 || stage === 3) {
       if (!show) {
         setSelected(2);
+        setItem(cardValue);
       }
     }
   };

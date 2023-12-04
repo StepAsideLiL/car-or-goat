@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { useStore } from "@/lib/store/store";
+import ConfettiRain from "./confetti-rain";
 
 const CardSection = ({ cards }: { cards: number[] }) => {
   const indexOfFirstZero = cards.indexOf(0);
@@ -22,6 +23,7 @@ const CardSection = ({ cards }: { cards: number[] }) => {
     state.setShowCard3,
   ]);
   const seletectedCard = useStore((state) => state.selectedCard);
+  const item = useStore((state) => state.selectedItem);
   const stageMessage = [
     "Pick a card, one of these card contains a Car, other contain one Goat each.",
     "Revel a card.",
@@ -99,6 +101,12 @@ const CardSection = ({ cards }: { cards: number[] }) => {
         <p>First Zero: {indexOfFirstZero}</p>
         <p>One: {indexOfOne}</p>
       </div> */}
+
+      {stage === 5 && item === 1 && (
+        <div className="m-0 overflow-hidden">
+          <ConfettiRain />
+        </div>
+      )}
     </section>
   );
 };

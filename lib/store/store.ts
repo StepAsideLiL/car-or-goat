@@ -3,6 +3,8 @@ import { create } from "zustand";
 type Store = {
   stage: number;
   increaseStage: () => void;
+  selectedItem: number | null;
+  setSelectedItem: (newItem: number) => void;
   selectedCard: number | null;
   setSeletedCard: (newCard: number) => void;
   showCard1: boolean;
@@ -16,6 +18,8 @@ type Store = {
 export const useStore = create<Store>((set) => ({
   stage: 0,
   increaseStage: () => set((state) => ({ stage: state.stage + 1 })),
+  selectedItem: null,
+  setSelectedItem: (newItem) => set(() => ({ selectedItem: newItem })),
   selectedCard: null,
   setSeletedCard: (newCard) => set(() => ({ selectedCard: newCard })),
   showCard1: false,
