@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { HelpCircle } from "lucide-react";
 import { useStore } from "@/lib/store/store";
 
-const BottomStat = () => {
+const VariableStat = () => {
   const [stage, selectedCard, showCard1, showCard2, showCard3] = useStore(
     (state) => [
       state.stage,
@@ -42,4 +42,4 @@ const BottomStat = () => {
   );
 };
 
-export default BottomStat;
+export default VariableStat;

@@ -1,4 +1,5 @@
-import BottomStat from "@/components/playing-field/botton-stat";
+import BottomStat from "@/components/playing-field/variable-stat";
+import Navbar from "@/components/templates/navbar";
 import { Children } from "@/lib/types";
 import { Metadata } from "next";
 
@@ -8,12 +9,12 @@ export const metadata: Metadata = {
 
 const PlayboardLayout = ({ children }: Children) => {
   return (
-    <div>
+    <div className="min-h-screen">
+      <Navbar />
+
       {children}
 
-      <div className="fixed bottom-4 right-4">
-        <BottomStat />
-      </div>
+      <div className="fixed bottom-4 right-4"></div>
     </div>
   );
 };

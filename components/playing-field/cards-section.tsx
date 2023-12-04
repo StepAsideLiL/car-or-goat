@@ -64,7 +64,7 @@ const CardSection = ({ cards }: { cards: number[] }) => {
 
   return (
     <section className="space-y-5">
-      <div className="h-32 text-center">
+      <div className="h-20 text-center">
         <h1 className="text-xl">{stageMessage[stage]}</h1>
       </div>
 
@@ -77,30 +77,11 @@ const CardSection = ({ cards }: { cards: number[] }) => {
       <Button
         variant={"outline"}
         onClick={handleNextBtn}
+        className="w-24 h-16"
         disabled={seletectedCard === null ? true : false}
       >
-        <ChevronRight />
+        <ChevronRight size={"60px"} />
       </Button>
-
-      {/* <Button
-        variant={"outline"}
-        onClick={handleNextBtn}
-        disabled={seletectedCard === null ? true : false}
-      >
-        <ChevronRight /> {stage}
-      </Button> */}
-
-      {/* <div>
-        {cards.map((card, index) => (
-          <span key={index}>
-            {card === 1 ? "Car" : "Goat"}
-            {", "}
-          </span>
-        ))}
-
-        <p>First Zero: {indexOfFirstZero}</p>
-        <p>One: {indexOfOne}</p>
-      </div> */}
 
       {stage === 5 && item === 1 && (
         <div className="m-0 overflow-hidden">
