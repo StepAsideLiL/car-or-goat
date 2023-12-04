@@ -1,5 +1,10 @@
 import BottomStat from "@/components/playing-field/botton-stat";
 import { Children } from "@/lib/types";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Play",
+};
 
 const PlayboardLayout = ({ children }: Children) => {
   return (

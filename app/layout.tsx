@@ -4,8 +4,11 @@ import { inter } from "@/lib/fonts";
 import { Children } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "Car or Goat - A Monty Hall Problem",
-  description: "Will you win a car or take a goat home",
+  title: {
+    template: "%s - Car or Goat",
+    default: "Car or Goat - A Monty Hall Problem",
+  },
+  description: "Will you win a Car or take a Goat home",
 };
 
 export default function RootLayout({ children }: Children) {

@@ -1,11 +1,6 @@
 import CardSection from "@/components/playing-field/cards-section";
 import { Main } from "@/components/uis";
 import { carGoatArrayGenerator } from "@/lib/utils";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Play",
-};
 
 const PlayPage = () => {
   const cards = carGoatArrayGenerator();
