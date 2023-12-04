@@ -77,10 +77,18 @@ const CardSection = ({ cards }: { cards: number[] }) => {
         onClick={handleNextBtn}
         disabled={seletectedCard === null ? true : false}
       >
-        <ChevronRight /> {stage}
+        <ChevronRight />
       </Button>
 
-      <div>
+      {/* <Button
+        variant={"outline"}
+        onClick={handleNextBtn}
+        disabled={seletectedCard === null ? true : false}
+      >
+        <ChevronRight /> {stage}
+      </Button> */}
+
+      {/* <div>
         {cards.map((card, index) => (
           <span key={index}>
             {card === 1 ? "Car" : "Goat"}
@@ -90,7 +98,7 @@ const CardSection = ({ cards }: { cards: number[] }) => {
 
         <p>First Zero: {indexOfFirstZero}</p>
         <p>One: {indexOfOne}</p>
-      </div>
+      </div> */}
     </section>
   );
 };
