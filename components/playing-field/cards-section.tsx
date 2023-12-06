@@ -6,12 +6,15 @@ import {
   CardContainer3,
 } from "./card-container";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, RefreshCcw } from "lucide-react";
 import { useStore } from "@/lib/store/store";
 import ConfettiRain from "./confetti-rain";
 import { updateScore } from "@/lib/localStorage";
+import { useRouter } from "next/navigation";
+import { resetStore } from "@/lib/store/store-utils";
 
 const CardSection = ({ cards }: { cards: number[] }) => {
+  const router = useRouter();
   const indexOfFirstZero = cards.indexOf(0);
   const indexOfOne = cards.indexOf(1);
   const [stage, increaseStage] = useStore((state) => [
@@ -67,6 +70,10 @@ const CardSection = ({ cards }: { cards: number[] }) => {
         updateScore();
       }
     }
+    if (stage === 4) {
+      router.refresh();
+      resetStore();
+    }
   };
 
   return (
@@ -75,7 +82,7 @@ const CardSection = ({ cards }: { cards: number[] }) => {
         <h1 className="md:text-xl text-base">{stageMessage[stage]}</h1>
       </div>
 
-      <section className="flex justify-center gap-3 w-full">
+      <section className="flex justify-center gap-1 w-full">
         <CardContainer1 cardValue={cards[0]} />
         <CardContainer2 cardValue={cards[1]} />
         <CardContainer3 cardValue={cards[2]} />
@@ -87,7 +94,11 @@ const CardSection = ({ cards }: { cards: number[] }) => {
         className="w-24 h-16"
         disabled={seletectedCard === null ? true : false}
       >
-        <ChevronRight size={"60px"} />
+        {stage !== 4 ? (
+          <ChevronRight size={"60px"} />
+        ) : (
+          <RefreshCcw size={"40px"} />
+        )}
       </Button>
 
       {stage >= 4 && item === 1 && (

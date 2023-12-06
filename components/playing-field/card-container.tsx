@@ -9,7 +9,7 @@ export const CardContainer1 = ({ cardValue }: { cardValue: number }) => {
   const show = useStore((state) => state.showCard1);
   const [selected, setSelected] = useStore((state) => [
     state.selectedCard,
-    state.setSeletedCard,
+    state.setSelectedCard,
   ]);
   const setItem = useStore((state) => state.setSelectedItem);
 
@@ -48,7 +48,7 @@ export const CardContainer2 = ({ cardValue }: { cardValue: number }) => {
   const show = useStore((state) => state.showCard2);
   const [selected, setSelected] = useStore((state) => [
     state.selectedCard,
-    state.setSeletedCard,
+    state.setSelectedCard,
   ]);
   const setItem = useStore((state) => state.setSelectedItem);
 
@@ -87,7 +87,7 @@ export const CardContainer3 = ({ cardValue }: { cardValue: number }) => {
   const show = useStore((state) => state.showCard3);
   const [selected, setSelected] = useStore((state) => [
     state.selectedCard,
-    state.setSeletedCard,
+    state.setSelectedCard,
   ]);
   const setItem = useStore((state) => state.setSelectedItem);
 

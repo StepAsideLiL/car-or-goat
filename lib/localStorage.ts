@@ -4,6 +4,7 @@ import { useScoreStore } from "./store/store";
 
 type UserScore = {
   username: string;
+  userId: string;
   totalPlayed: number;
   totalWin: number;
   updatedAt: string;
@@ -12,6 +13,7 @@ type UserScore = {
 const localStorageKey = "carGoatDB";
 const scoreDB = {
   username: "",
+  userId: "",
   totalPlayed: 0,
   totalWin: 0,
   updatedAt: "",
