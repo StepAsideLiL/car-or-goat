@@ -58,11 +58,9 @@ const CardSection = ({ cards }: { cards: number[] }) => {
       } else {
         setShowCard3();
       }
-      // increaseStage();
     }
 
     if (stage === 3) {
-      // Todo: score
       if (item === 1) {
         updateScore(true);
       } else {
@@ -72,12 +70,12 @@ const CardSection = ({ cards }: { cards: number[] }) => {
   };
 
   return (
-    <section className="space-y-5">
+    <section className="space-y-5 w-full">
       <div className="h-20 text-center">
-        <h1 className="text-xl">{stageMessage[stage]}</h1>
+        <h1 className="md:text-xl text-base">{stageMessage[stage]}</h1>
       </div>
 
-      <section className="flex justify-center gap-3">
+      <section className="flex justify-center gap-3 w-full">
         <CardContainer1 cardValue={cards[0]} />
         <CardContainer2 cardValue={cards[1]} />
         <CardContainer3 cardValue={cards[2]} />

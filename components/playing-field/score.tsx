@@ -13,8 +13,11 @@ const Score = () => {
     <div className="flex gap-2 items-center">
       <h1>{username}</h1>
 
-      <h1 className="text-xl font-medium">
-        Score: {totalWin} / {totalPlayed}
+      <h1 className="md:text-xl text-base font-medium">
+        <span>Score:</span>{" "}
+        <span className="inline-block">
+          {totalWin} / {totalPlayed}
+        </span>
       </h1>
     </div>
   );

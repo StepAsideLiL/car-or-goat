@@ -10,9 +10,9 @@ export const Main = ({ children, className = "" }: ChildrenClassname) => {
 
 export const PlayCard = ({ children, className = "" }: ChildrenClassname) => {
   return (
-    <Card className={cn("max-w-md w-96 h-96", className)}>
+    <Card className={cn("max-w-md md:w-96 w-full md:h-96 h-52", className)}>
       <CardContent className="flex items-center justify-center h-full">
-        <h1 className="text-4xl font-semibold">{children}</h1>
+        <h1 className="md:text-4xl text-xl font-semibold">{children}</h1>
       </CardContent>
     </Card>
   );
