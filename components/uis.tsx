@@ -1,6 +1,8 @@
 import { ChildrenClassname } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
+import { HelpCircle } from "lucide-react";
+import { GiGoat, GiCityCar } from "react-icons/gi";
 
 export const Main = ({ children, className = "" }: ChildrenClassname) => {
   return (
@@ -12,8 +14,20 @@ export const PlayCard = ({ children, className = "" }: ChildrenClassname) => {
   return (
     <Card className={cn("max-w-md md:w-96 w-full md:h-96 h-52", className)}>
       <CardContent className="flex items-center justify-center h-full">
-        <h1 className="md:text-4xl text-xl font-semibold">{children}</h1>
+        {children}
       </CardContent>
     </Card>
   );
+};
+
+export const QuestionIcon = () => {
+  return <HelpCircle className="md:w-20 md:h-20 w-10 h-10" />;
+};
+
+export const GoatIcon = () => {
+  return <GiGoat className="md:w-28 md:h-28 w-14 h-14" />;
+};
+
+export const CarIcon = () => {
+  return <GiCityCar className="md:w-28 md:h-28 w-14 h-14" />;
 };

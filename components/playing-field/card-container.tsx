@@ -1,9 +1,8 @@
 "use client";
 
 import { useStore } from "@/lib/store/store";
-import { PlayCard } from "../uis";
+import { CarIcon, GoatIcon, PlayCard, QuestionIcon } from "@/components/uis";
 import { cn } from "@/lib/utils";
-import { GiGoat, GiCityCar } from "react-icons/gi";
 
 export const CardContainer1 = ({ cardValue }: { cardValue: number }) => {
   const stage = useStore((state) => state.stage);
@@ -29,15 +28,15 @@ export const CardContainer1 = ({ cardValue }: { cardValue: number }) => {
         {show ? (
           cardValue === 1 ? (
             <span className="text-green-600">
-              <GiCityCar className="md:w-28 md:h-28 w-14 h-14" />
+              <CarIcon />
             </span>
           ) : (
             <span className="text-red-600">
-              <GiGoat className="md:w-28 md:h-28 w-14 h-14" />
+              <GoatIcon />
             </span>
           )
         ) : (
-          "Card 1"
+          <QuestionIcon />
         )}
       </PlayCard>
     </div>
@@ -68,15 +67,15 @@ export const CardContainer2 = ({ cardValue }: { cardValue: number }) => {
         {show ? (
           cardValue === 1 ? (
             <span className="text-green-600">
-              <GiCityCar className="md:w-28 md:h-28 w-14 h-14" />
+              <CarIcon />
             </span>
           ) : (
             <span className="text-red-600">
-              <GiGoat className="md:w-28 md:h-28 w-14 h-14" />
+              <GoatIcon />
             </span>
           )
         ) : (
-          "Card 2"
+          <QuestionIcon />
         )}
       </PlayCard>
     </div>
@@ -107,15 +106,15 @@ export const CardContainer3 = ({ cardValue }: { cardValue: number }) => {
         {show ? (
           cardValue === 1 ? (
             <span className="text-green-600">
-              <GiCityCar className="md:w-28 md:h-28 w-14 h-14" />
+              <CarIcon />
             </span>
           ) : (
             <span className="text-red-600">
-              <GiGoat className="md:w-28 md:h-28 w-14 h-14" />
+              <GoatIcon />
             </span>
           )
         ) : (
-          "Card 3"
+          <QuestionIcon />
         )}
       </PlayCard>
     </div>
