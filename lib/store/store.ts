@@ -29,3 +29,29 @@ export const useStore = create<Store>((set) => ({
   setShowCard2: () => set((state) => ({ showCard2: !state.showCard2 })),
   setShowCard3: () => set((state) => ({ showCard3: !state.showCard3 })),
 }));
+
+type ScoreStore = {
+  username: string;
+  totalPlayed: number;
+  totalWin: number;
+  updatedAt: string;
+  setUsername: (username: string) => void;
+  setTotalPlayed: (totalPlayed: number) => void;
+  setTotalWin: (totalWin: number) => void;
+  setUpdatedAt: (date: string) => void;
+  incTotalPlayed: () => void;
+  incTotalWin: () => void;
+};
+
+export const useScoreStore = create<ScoreStore>((set) => ({
+  username: "",
+  totalPlayed: 0,
+  totalWin: 0,
+  updatedAt: "",
+  setUsername: (username) => set(() => ({ username: username })),
+  setTotalPlayed: (totalPlayed) => set(() => ({ totalPlayed: totalPlayed })),
+  setTotalWin: (totalWin) => set(() => ({ totalWin: totalWin })),
+  setUpdatedAt: (date) => set(() => ({ updatedAt: date })),
+  incTotalPlayed: () => set((s) => ({ totalPlayed: s.totalPlayed + 1 })),
+  incTotalWin: () => set((s) => ({ totalWin: s.totalWin + 1 })),
+}));

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { useStore } from "@/lib/store/store";
 import ConfettiRain from "./confetti-rain";
+import { updateScore } from "@/lib/localStorage";
 
 const CardSection = ({ cards }: { cards: number[] }) => {
   const indexOfFirstZero = cards.indexOf(0);
@@ -25,12 +26,11 @@ const CardSection = ({ cards }: { cards: number[] }) => {
   const seletectedCard = useStore((state) => state.selectedCard);
   const item = useStore((state) => state.selectedItem);
   const stageMessage = [
-    "Pick a card, one of these card contains a Car, other contain one Goat each.",
+    "Pick a card, one of these card contains a Car, others contain one Goat each.",
     "Revel a card.",
     "Here is a Goat card.",
     "Would you like to change your initial card?",
-    "Here is the Car card",
-    "You win a Car",
+    item === 1 ? "You win a Car" : "You got a Goat",
   ];
 
   const handleNextBtn = () => {
@@ -58,7 +58,16 @@ const CardSection = ({ cards }: { cards: number[] }) => {
       } else {
         setShowCard3();
       }
-      increaseStage();
+      // increaseStage();
+    }
+
+    if (stage === 3) {
+      // Todo: score
+      if (item === 1) {
+        updateScore(true);
+      } else {
+        updateScore();
+      }
     }
   };
 
@@ -83,7 +92,7 @@ const CardSection = ({ cards }: { cards: number[] }) => {
         <ChevronRight size={"60px"} />
       </Button>
 
-      {stage === 5 && item === 1 && (
+      {stage >= 4 && item === 1 && (
         <div className="m-0 overflow-hidden">
           <ConfettiRain />
         </div>
