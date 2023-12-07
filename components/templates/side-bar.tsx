@@ -12,9 +12,25 @@ import {
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScoreStore } from "@/lib/store/store";
+import { clearScore } from "@/lib/localStorage";
+import { resetStore, resetUserScoreAndInfo } from "@/lib/store/store-utils";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
-  const [username, userId] = useScoreStore((s) => [s.username, s.userId]);
+  const router = useRouter();
+  const [username, userId, played, win] = useScoreStore((s) => [
+    s.username,
+    s.userId,
+    s.totalPlayed,
+    s.totalWin,
+  ]);
+
+  const handleReset = () => {
+    router.refresh();
+    clearScore();
+    resetUserScoreAndInfo();
+    resetStore();
+  };
 
   return (
     <Sheet>
@@ -33,9 +49,11 @@ const Sidebar = () => {
         </SheetHeader>
 
         <div className="space-y-2">
-          <p>Played: {"12"}</p>
-          <p>Win: {"12"}</p>
+          <p>Played: {played}</p>
+          <p>Win: {win}</p>
           <p>Change: {"12"}</p>
+
+          <Button onClick={handleReset}>Reset</Button>
         </div>
       </SheetContent>
     </Sheet>

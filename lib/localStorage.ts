@@ -1,6 +1,6 @@
 "use client";
 
-import { useScoreStore } from "./store/store";
+import { useScoreStore } from "@/lib/store/store";
 import { customAlphabet } from "nanoid";
 
 type UserScore = {
@@ -11,7 +11,7 @@ type UserScore = {
   updatedAt: string;
 };
 
-const localStorageKey = "carGoatDB";
+export const localStorageKey = "carGoatDB";
 const scoreDB = {
   username: "",
   userId: "",
@@ -19,7 +19,7 @@ const scoreDB = {
   totalWin: 0,
   updatedAt: "",
 };
-const nanoid = customAlphabet("1234567890abcdef", 10);
+const nanoid = customAlphabet("0123456789abcdefghijklmnopqrstuvwxyz", 10);
 
 const stringifyJson = (obj: UserScore): string => {
   return JSON.stringify(obj);
@@ -31,19 +31,25 @@ const parseJson = (str: string): UserScore => {
 
 export const createScoreLocalDB = () => {
   if (typeof window !== "undefined" && window.localStorage) {
-    const carGoatDB = localStorage.getItem(localStorageKey);
-    if (!carGoatDB) {
+    const scoreLocalDB = localStorage.getItem(localStorageKey);
+    if (!scoreLocalDB) {
       localStorage.setItem(localStorageKey, stringifyJson(scoreDB));
     }
   }
 };
 
 export const getUserScore = (): UserScore => {
-  let carGoatDB = "";
+  let scoreLocalDB = "";
   if (typeof window !== "undefined" && window.localStorage) {
-    carGoatDB = localStorage.getItem(localStorageKey) || "";
+    scoreLocalDB = localStorage.getItem(localStorageKey) || "";
   }
-  return parseJson(carGoatDB);
+  return parseJson(scoreLocalDB);
+};
+
+export const clearScore = () => {
+  if (typeof window !== "undefined" && window.localStorage) {
+    localStorage.removeItem(localStorageKey);
+  }
 };
 
 export const updateScore = (status: boolean = false) => {
@@ -85,4 +91,19 @@ export const setUsernameAndId = (username: string) => {
     useScoreStore.getState().setUsername(username);
     useScoreStore.getState().setUserId(userId);
   }
+};
+
+const obj1 = {
+  username: "",
+  totalPlayed: 4,
+  totalWin: 12,
+  updatedAt: "",
+};
+
+const obj2 = {
+  username: "",
+  userId: "",
+  totalPlayed: 0,
+  totalWin: 0,
+  updatedAt: "",
 };
