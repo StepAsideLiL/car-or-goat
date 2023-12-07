@@ -12,6 +12,7 @@ import ConfettiRain from "./confetti-rain";
 import { updateScore } from "@/lib/localStorage";
 import { useRouter } from "next/navigation";
 import { resetStore } from "@/lib/store/store-utils";
+import SetUsername from "@/components/playing-field/set-name";
 
 const CardSection = ({ cards }: { cards: number[] }) => {
   const router = useRouter();
@@ -106,6 +107,8 @@ const CardSection = ({ cards }: { cards: number[] }) => {
           <ConfettiRain />
         </div>
       )}
+
+      {stage === 4 && <SetUsername />}
     </section>
   );
 };

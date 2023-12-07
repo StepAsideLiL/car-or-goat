@@ -2,7 +2,7 @@ import VariableStat from "@/components/playing-field/variable-stat";
 import Score from "@/components/playing-field/score";
 import StageCount from "../playing-field/stage-count";
 import { Dices } from "lucide-react";
-import { GiGoat } from "react-icons/gi";
+import Sidebar from "./side-bar";
 
 const Navbar = () => {
   return (
@@ -19,6 +19,7 @@ const Navbar = () => {
         <Score />
 
         <VariableStat />
+        <Sidebar />
       </div>
     </header>
   );

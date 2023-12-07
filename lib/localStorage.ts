@@ -1,6 +1,7 @@
 "use client";
 
 import { useScoreStore } from "./store/store";
+import { customAlphabet } from "nanoid";
 
 type UserScore = {
   username: string;
@@ -18,6 +19,7 @@ const scoreDB = {
   totalWin: 0,
   updatedAt: "",
 };
+const nanoid = customAlphabet("1234567890abcdef", 10);
 
 const stringifyJson = (obj: UserScore): string => {
   return JSON.stringify(obj);
@@ -45,32 +47,42 @@ export const getUserScore = (): UserScore => {
 };
 
 export const updateScore = (status: boolean = false) => {
-  if (status) {
-    useScoreStore.getState().incTotalPlayed();
-    useScoreStore.getState().incTotalWin();
-    updateLocalScoreDB(true);
-  } else {
-    useScoreStore.getState().incTotalPlayed();
-    updateLocalScoreDB();
-  }
-};
-
-export const updateLocalScoreDB = (win: boolean = false) => {
   if (typeof window !== "undefined" && window.localStorage) {
     const scoreDB = getUserScore();
-    if (win) {
+    const currentDate = new Date();
+    if (status) {
       const updatedScoreDB = {
         ...scoreDB,
         totalPlayed: scoreDB.totalPlayed + 1,
         totalWin: scoreDB.totalWin + 1,
+        updatedAt: currentDate.toISOString(),
       };
       localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
+      useScoreStore.getState().incTotalPlayed();
+      useScoreStore.getState().incTotalWin();
     } else {
       const updatedScoreDB = {
         ...scoreDB,
         totalPlayed: scoreDB.totalPlayed + 1,
+        updatedAt: currentDate.toISOString(),
       };
       localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
+      useScoreStore.getState().incTotalPlayed();
     }
+  }
+};
+
+export const setUsernameAndId = (username: string) => {
+  const userId = nanoid();
+  if (typeof window !== "undefined" && window.localStorage) {
+    const scoreDB = getUserScore();
+    const updatedScoreDB = {
+      ...scoreDB,
+      username: username,
+      userId: userId,
+    };
+    localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
+    useScoreStore.getState().setUsername(username);
+    useScoreStore.getState().setUserId(userId);
   }
 };
