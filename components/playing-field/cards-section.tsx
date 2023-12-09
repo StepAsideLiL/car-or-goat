@@ -83,7 +83,7 @@ const CardSection = ({ cards }: { cards: number[] }) => {
         <h1 className="md:text-xl text-base">{stageMessage[stage]}</h1>
       </div>
 
-      <section className="flex justify-center gap-1 w-full">
+      <section className="flex justify-center gap-2">
         <CardContainer1 cardValue={cards[0]} />
         <CardContainer2 cardValue={cards[1]} />
         <CardContainer3 cardValue={cards[2]} />
