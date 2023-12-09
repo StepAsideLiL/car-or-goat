@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, RefreshCcw } from "lucide-react";
 import { useStore } from "@/lib/store/store";
 import ConfettiRain from "./confetti-rain";
-import { updateScore } from "@/lib/localStorage";
+import { gameWinned } from "@/lib/localStorage";
 import { useRouter } from "next/navigation";
 import { resetStore } from "@/lib/store/store-utils";
 import SetUsername from "@/components/playing-field/set-name";
@@ -66,9 +66,9 @@ const CardSection = ({ cards }: { cards: number[] }) => {
 
     if (stage === 3) {
       if (item === 1) {
-        updateScore(true);
+        gameWinned(true);
       } else {
-        updateScore();
+        gameWinned();
       }
     }
     if (stage === 4) {

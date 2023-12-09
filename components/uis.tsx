@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { HelpCircle } from "lucide-react";
 import { GiGoat, GiCityCar } from "react-icons/gi";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const Main = ({ children, className = "" }: ChildrenClassname) => {
   return (
@@ -30,4 +31,14 @@ export const GoatIcon = () => {
 
 export const CarIcon = () => {
   return <GiCityCar className="md:w-28 md:h-28 w-14 h-14" />;
+};
+
+export const AvatarIcon = ({ username }: { username: string }) => {
+  return (
+    <Avatar>
+      <AvatarFallback>
+        {username === "" ? "U" : username[0].toUpperCase()}
+      </AvatarFallback>
+    </Avatar>
+  );
 };

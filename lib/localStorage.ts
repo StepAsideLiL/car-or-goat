@@ -1,6 +1,6 @@
 "use client";
 
-import { useScoreStore } from "@/lib/store/store";
+import { useScoreStore, useStore } from "@/lib/store/store";
 import { customAlphabet } from "nanoid";
 
 type UserScore = {
@@ -8,6 +8,9 @@ type UserScore = {
   userId: string;
   totalPlayed: number;
   totalWin: number;
+  totalChange: number;
+  winWithChange: number;
+  winWithoutChange: number;
   updatedAt: string;
 };
 
@@ -17,6 +20,9 @@ const scoreDB = {
   userId: "",
   totalPlayed: 0,
   totalWin: 0,
+  totalChange: 0,
+  winWithChange: 0,
+  winWithoutChange: 0,
   updatedAt: "",
 };
 const nanoid = customAlphabet("0123456789abcdefghijklmnopqrstuvwxyz", 10);
@@ -52,32 +58,6 @@ export const clearScore = () => {
   }
 };
 
-export const updateScore = (status: boolean = false) => {
-  if (typeof window !== "undefined" && window.localStorage) {
-    const scoreDB = getUserScore();
-    const currentDate = new Date();
-    if (status) {
-      const updatedScoreDB = {
-        ...scoreDB,
-        totalPlayed: scoreDB.totalPlayed + 1,
-        totalWin: scoreDB.totalWin + 1,
-        updatedAt: currentDate.toISOString(),
-      };
-      localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
-      useScoreStore.getState().incTotalPlayed();
-      useScoreStore.getState().incTotalWin();
-    } else {
-      const updatedScoreDB = {
-        ...scoreDB,
-        totalPlayed: scoreDB.totalPlayed + 1,
-        updatedAt: currentDate.toISOString(),
-      };
-      localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
-      useScoreStore.getState().incTotalPlayed();
-    }
-  }
-};
-
 export const setUsernameAndId = (username: string) => {
   const userId = nanoid();
   if (typeof window !== "undefined" && window.localStorage) {
@@ -93,17 +73,50 @@ export const setUsernameAndId = (username: string) => {
   }
 };
 
-const obj1 = {
-  username: "",
-  totalPlayed: 4,
-  totalWin: 12,
-  updatedAt: "",
-};
-
-const obj2 = {
-  username: "",
-  userId: "",
-  totalPlayed: 0,
-  totalWin: 0,
-  updatedAt: "",
+export const gameWinned = (win: boolean = false) => {
+  if (typeof window !== "undefined" && window.localStorage) {
+    const scoreDB = getUserScore();
+    const currentDate = new Date();
+    const isChanged =
+      useStore.getState().selectedCardStage0 !==
+      useStore.getState().selectedCardStage3
+        ? true
+        : false;
+    if (win) {
+      const updatedScoreDB = {
+        ...scoreDB,
+        totalPlayed: scoreDB.totalPlayed + 1,
+        totalWin: scoreDB.totalWin + 1,
+        totalChange: isChanged ? scoreDB.totalChange + 1 : scoreDB.totalChange,
+        winWithChange: isChanged
+          ? scoreDB.winWithChange + 1
+          : scoreDB.winWithChange,
+        winWithoutChange: isChanged
+          ? scoreDB.winWithChange
+          : scoreDB.winWithChange + 1,
+        updatedAt: currentDate.toISOString(),
+      };
+      localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
+      useScoreStore.getState().incTotalPlayed();
+      useScoreStore.getState().incTotalWin();
+      if (isChanged) {
+        useScoreStore.getState().incTotalChange();
+        useScoreStore.getState().incWinWithChange();
+      } else {
+        useScoreStore.getState().incWinWithoutChange();
+      }
+    } else {
+      const updatedScoreDB = {
+        ...scoreDB,
+        totalPlayed: scoreDB.totalPlayed + 1,
+        totalChange: isChanged ? scoreDB.totalChange + 1 : scoreDB.totalChange,
+        updatedAt: currentDate.toISOString(),
+      };
+      localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
+      useScoreStore.getState().incTotalPlayed();
+      if (isChanged) {
+        useScoreStore.getState().incTotalChange();
+      }
+    }
+  }
 };

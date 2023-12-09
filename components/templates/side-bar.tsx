@@ -9,20 +9,31 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScoreStore } from "@/lib/store/store";
 import { clearScore } from "@/lib/localStorage";
 import { resetStore, resetUserScoreAndInfo } from "@/lib/store/store-utils";
 import { useRouter } from "next/navigation";
+import { AvatarIcon } from "@/components/uis";
 
 const Sidebar = () => {
   const router = useRouter();
-  const [username, userId, played, win] = useScoreStore((s) => [
+  const [
+    username,
+    userId,
+    played,
+    totalWin,
+    changed,
+    winningChange,
+    winningWithoutChange,
+  ] = useScoreStore((s) => [
     s.username,
     s.userId,
     s.totalPlayed,
     s.totalWin,
+    s.totalChange,
+    s.winWithChange,
+    s.winWithoutChange,
   ]);
 
   const handleReset = () => {
@@ -36,7 +47,7 @@ const Sidebar = () => {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant={"ghost"}>
-          <Menu />
+          <AvatarIcon username={username} />
         </Button>
       </SheetTrigger>
 
@@ -49,9 +60,15 @@ const Sidebar = () => {
         </SheetHeader>
 
         <div className="space-y-2">
-          <p>Played: {played}</p>
-          <p>Win: {win}</p>
-          <p>Change: {"12"}</p>
+          <h1 className="text-xl font-semibold">Your Scores</h1>
+
+          <div className="space-y-1">
+            <p>Played: {played}</p>
+            <p>Total Win: {totalWin}</p>
+            <p>Option Changed: {changed}</p>
+            <p>Win with Change: {winningChange}</p>
+            <p>Win without Change: {winningWithoutChange}</p>
+          </div>
 
           <Button onClick={handleReset}>Reset</Button>
         </div>

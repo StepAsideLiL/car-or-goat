@@ -10,15 +10,25 @@ import { HelpCircle } from "lucide-react";
 import { useStore } from "@/lib/store/store";
 
 const VariableStat = () => {
-  const [stage, selectedCard, selectedItem, showCard1, showCard2, showCard3] =
-    useStore((state) => [
-      state.stage,
-      state.selectedCard,
-      state.selectedItem,
-      state.showCard1,
-      state.showCard2,
-      state.showCard3,
-    ]);
+  const [
+    stage,
+    selectedCard,
+    selectedCardS0,
+    selectedCardS3,
+    selectedItem,
+    showCard1,
+    showCard2,
+    showCard3,
+  ] = useStore((state) => [
+    state.stage,
+    state.selectedCard,
+    state.selectedCardStage0,
+    state.selectedCardStage3,
+    state.selectedItem,
+    state.showCard1,
+    state.showCard2,
+    state.showCard3,
+  ]);
 
   return (
     <HoverCard>
@@ -33,6 +43,14 @@ const VariableStat = () => {
         <p>
           Seclected Card:{" "}
           {selectedCard === null ? "No card selected" : selectedCard}
+        </p>
+        <p>
+          Seclected Card at Stage 0:{" "}
+          {selectedCardS0 === null ? "No card selected" : selectedCardS0}
+        </p>
+        <p>
+          Seclected Card at Stage 3:{" "}
+          {selectedCardS3 === null ? "No card selected" : selectedCardS3}
         </p>
         <p>
           Seclected Item:{" "}

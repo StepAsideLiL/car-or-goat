@@ -7,15 +7,26 @@ import { cn } from "@/lib/utils";
 export const CardContainer1 = ({ cardValue }: { cardValue: number }) => {
   const stage = useStore((state) => state.stage);
   const show = useStore((state) => state.showCard1);
-  const [selected, setSelected] = useStore((state) => [
-    state.selectedCard,
-    state.setSelectedCard,
-  ]);
+  const [selected, setSelected, setSelectedS0, setSelectedS3] = useStore(
+    (state) => [
+      state.selectedCard,
+      state.setSelectedCard,
+      state.setSelectedCardStage0,
+      state.setSelectedCardStage3,
+    ]
+  );
   const setItem = useStore((state) => state.setSelectedItem);
 
   const handleClick = () => {
-    if (stage === 0 || stage === 3) {
-      if (!show) {
+    if (!show) {
+      if (stage === 0) {
+        setSelectedS0(0);
+        setSelectedS3(0);
+        setSelected(0);
+        setItem(cardValue);
+      }
+      if (stage === 3) {
+        setSelectedS3(0);
         setSelected(0);
         setItem(cardValue);
       }
@@ -46,15 +57,26 @@ export const CardContainer1 = ({ cardValue }: { cardValue: number }) => {
 export const CardContainer2 = ({ cardValue }: { cardValue: number }) => {
   const stage = useStore((state) => state.stage);
   const show = useStore((state) => state.showCard2);
-  const [selected, setSelected] = useStore((state) => [
-    state.selectedCard,
-    state.setSelectedCard,
-  ]);
+  const [selected, setSelected, setSelectedS0, setSelectedS3] = useStore(
+    (state) => [
+      state.selectedCard,
+      state.setSelectedCard,
+      state.setSelectedCardStage0,
+      state.setSelectedCardStage3,
+    ]
+  );
   const setItem = useStore((state) => state.setSelectedItem);
 
   const handleClick = () => {
-    if (stage === 0 || stage === 3) {
-      if (!show) {
+    if (!show) {
+      if (stage === 0) {
+        setSelectedS0(1);
+        setSelectedS3(1);
+        setSelected(1);
+        setItem(cardValue);
+      }
+      if (stage === 3) {
+        setSelectedS3(1);
         setSelected(1);
         setItem(cardValue);
       }
@@ -85,15 +107,26 @@ export const CardContainer2 = ({ cardValue }: { cardValue: number }) => {
 export const CardContainer3 = ({ cardValue }: { cardValue: number }) => {
   const stage = useStore((state) => state.stage);
   const show = useStore((state) => state.showCard3);
-  const [selected, setSelected] = useStore((state) => [
-    state.selectedCard,
-    state.setSelectedCard,
-  ]);
+  const [selected, setSelected, setSelectedS0, setSelectedS3] = useStore(
+    (state) => [
+      state.selectedCard,
+      state.setSelectedCard,
+      state.setSelectedCardStage0,
+      state.setSelectedCardStage3,
+    ]
+  );
   const setItem = useStore((state) => state.setSelectedItem);
 
   const handleClick = () => {
-    if (stage === 0 || stage === 3) {
-      if (!show) {
+    if (!show) {
+      if (stage === 0) {
+        setSelectedS0(2);
+        setSelectedS3(2);
+        setSelected(2);
+        setItem(cardValue);
+      }
+      if (stage === 3) {
+        setSelectedS3(2);
         setSelected(2);
         setItem(cardValue);
       }
