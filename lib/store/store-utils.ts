@@ -16,5 +16,8 @@ export const resetUserScoreAndInfo = () => {
   useScoreStore.getState().setUserId("");
   useScoreStore.getState().setTotalPlayed(0);
   useScoreStore.getState().setTotalWin(0);
+  useScoreStore.getState().setTotalChange(0);
+  useScoreStore.getState().setWinWithChange(0);
+  useScoreStore.getState().setWinWithoutChange(0);
   useScoreStore.getState().setUpdatedAt("");
 };
