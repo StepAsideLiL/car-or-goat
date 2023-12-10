@@ -2,6 +2,7 @@
 
 import { useScoreStore, useStore } from "@/lib/store/store";
 import { customAlphabet } from "nanoid";
+import { action } from "./actions";
 
 type UserScore = {
   username: string;
@@ -74,6 +75,7 @@ export const setUsernameAndId = (username: string) => {
 };
 
 export const gameWinned = (win: boolean = false) => {
+  action("brrrrrrrr....");
   if (typeof window !== "undefined" && window.localStorage) {
     const scoreDB = getUserScore();
     const currentDate = new Date();
