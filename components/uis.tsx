@@ -42,3 +42,14 @@ export const AvatarIcon = ({ username }: { username: string }) => {
     </Avatar>
   );
 };
+
+export const SidebarSectionHeader = ({
+  children,
+  className = "",
+}: ChildrenClassname) => {
+  return (
+    <h1 className={cn("text-lg font-medium text-muted-foreground", className)}>
+      {children}
+    </h1>
+  );
+};

@@ -1,3 +1,4 @@
+import { UserScore } from "@/lib/types";
 import { useScoreStore, useStore } from "./store";
 
 export const resetStore = () => {
@@ -20,4 +21,26 @@ export const resetUserScoreAndInfo = () => {
   useScoreStore.getState().setWinWithChange(0);
   useScoreStore.getState().setWinWithoutChange(0);
   useScoreStore.getState().setUpdatedAt("");
+};
+
+export const syncUserScoreAndInfo = (user: UserScore) => {
+  const {
+    username,
+    userId,
+    totalPlayed,
+    totalWin,
+    totalChange,
+    winWithChange,
+    winWithoutChange,
+    updatedAt,
+  } = user;
+
+  useScoreStore.getState().setUsername(username);
+  useScoreStore.getState().setUserId(userId);
+  useScoreStore.getState().setTotalPlayed(totalPlayed);
+  useScoreStore.getState().setTotalWin(totalWin);
+  useScoreStore.getState().setTotalChange(totalChange);
+  useScoreStore.getState().setWinWithChange(winWithChange);
+  useScoreStore.getState().setWinWithoutChange(winWithoutChange);
+  useScoreStore.getState().setUpdatedAt(updatedAt);
 };

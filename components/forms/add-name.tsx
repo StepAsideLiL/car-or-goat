@@ -1,4 +1,3 @@
-import { useScoreStore } from "@/lib/store/store";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import * as z from "zod";

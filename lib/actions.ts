@@ -43,3 +43,11 @@ export const updateAndCreateUser = async (userscore: UserScore) => {
     throw new Error("Database Error: Unable to Create User");
   }
 };
+
+export const findAndSync = async (userId: string) => {
+  const user = await prisma.user.findUnique({ where: { userId: userId } });
+  if (user) {
+    return user;
+  }
+  return null;
+};

@@ -4,6 +4,7 @@ import { useScoreStore, useStore } from "@/lib/store/store";
 import { customAlphabet } from "nanoid";
 import { updateAndCreateUser } from "@/lib/actions";
 import { UserScore } from "@/lib/types";
+import { syncUserScoreAndInfo } from "./store/store-utils";
 
 export const localStorageKey = "carGoatDB";
 const scoreDB = {
@@ -65,6 +66,14 @@ export const setUsernameAndId = (username: string) => {
     useScoreStore.getState().setUserId(userId);
 
     updateAndCreateUser(updatedScoreDB);
+  }
+};
+
+export const syncWithLocalDB = (user: UserScore) => {
+  if (typeof window !== "undefined" && window.localStorage) {
+    localStorage.setItem(localStorageKey, stringifyJson(user));
+
+    syncUserScoreAndInfo(user);
   }
 };
 
