@@ -2,18 +2,8 @@
 
 import { useScoreStore, useStore } from "@/lib/store/store";
 import { customAlphabet } from "nanoid";
-import { action } from "./actions";
-
-type UserScore = {
-  username: string;
-  userId: string;
-  totalPlayed: number;
-  totalWin: number;
-  totalChange: number;
-  winWithChange: number;
-  winWithoutChange: number;
-  updatedAt: string;
-};
+import { updateAndCreateUser } from "@/lib/actions";
+import { UserScore } from "@/lib/types";
 
 export const localStorageKey = "carGoatDB";
 const scoreDB = {
@@ -68,14 +58,17 @@ export const setUsernameAndId = (username: string) => {
       username: username,
       userId: userId,
     };
+
     localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
+
     useScoreStore.getState().setUsername(username);
     useScoreStore.getState().setUserId(userId);
+
+    updateAndCreateUser(updatedScoreDB);
   }
 };
 
 export const gameWinned = (win: boolean = false) => {
-  action("brrrrrrrr....");
   if (typeof window !== "undefined" && window.localStorage) {
     const scoreDB = getUserScore();
     const currentDate = new Date();
@@ -84,6 +77,7 @@ export const gameWinned = (win: boolean = false) => {
       useStore.getState().selectedCardStage3
         ? true
         : false;
+
     if (win) {
       const updatedScoreDB = {
         ...scoreDB,
@@ -98,15 +92,20 @@ export const gameWinned = (win: boolean = false) => {
           : scoreDB.winWithChange + 1,
         updatedAt: currentDate.toISOString(),
       };
+
       localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
+
       useScoreStore.getState().incTotalPlayed();
       useScoreStore.getState().incTotalWin();
+
       if (isChanged) {
         useScoreStore.getState().incTotalChange();
         useScoreStore.getState().incWinWithChange();
       } else {
         useScoreStore.getState().incWinWithoutChange();
       }
+
+      updateAndCreateUser(updatedScoreDB);
     } else {
       const updatedScoreDB = {
         ...scoreDB,
@@ -114,11 +113,16 @@ export const gameWinned = (win: boolean = false) => {
         totalChange: isChanged ? scoreDB.totalChange + 1 : scoreDB.totalChange,
         updatedAt: currentDate.toISOString(),
       };
+
       localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
+
       useScoreStore.getState().incTotalPlayed();
+
       if (isChanged) {
         useScoreStore.getState().incTotalChange();
       }
+
+      updateAndCreateUser(updatedScoreDB);
     }
   }
 };

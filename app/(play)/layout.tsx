@@ -1,4 +1,4 @@
-import BottomStat from "@/components/playing-field/variable-stat";
+import BottomStat from "@/components/templates/variable-stat";
 import Navbar from "@/components/templates/navbar";
 import { Children } from "@/lib/types";
 import { Metadata } from "next";

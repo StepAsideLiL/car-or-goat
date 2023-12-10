@@ -1,4 +1,4 @@
-import VariableStat from "@/components/playing-field/variable-stat";
+import VariableStat from "@/components/templates/variable-stat";
 import Score from "@/components/playing-field/score";
 import StageCount from "../playing-field/stage-count";
 import { Dices } from "lucide-react";

@@ -55,7 +55,10 @@ const Sidebar = () => {
         <SheetHeader>
           <SheetTitle>{username === "" ? "(No name)" : username}</SheetTitle>
           <SheetDescription>
-            {userId === "" ? "(No user id)" : userId}
+            User Id:{" "}
+            <span className="font-semibold">
+              {userId === "" ? "(No user id)" : userId}
+            </span>
           </SheetDescription>
         </SheetHeader>
 
