@@ -97,8 +97,8 @@ export const gameWinned = (win: boolean = false) => {
           ? scoreDB.winWithChange + 1
           : scoreDB.winWithChange,
         winWithoutChange: isChanged
-          ? scoreDB.winWithChange
-          : scoreDB.winWithChange + 1,
+          ? scoreDB.winWithoutChange
+          : scoreDB.winWithoutChange + 1,
         updatedAt: currentDate.toISOString(),
       };
 

@@ -79,8 +79,15 @@ const CardSection = ({ cards }: { cards: number[] }) => {
 
   return (
     <section className="space-y-5 w-full">
-      <div className="h-20 text-center">
-        <h1 className="md:text-xl text-base">{stageMessage[stage]}</h1>
+      <div className="h-20 flex items-start justify-between gap-10">
+        <h1 className="md:text-xl text-base font-medium">
+          <span>Stage:</span>{" "}
+          <span className="inline-block text-left">{stage + 1} / 5</span>
+        </h1>
+
+        <h1 className="md:text-xl text-base text-right">
+          {stageMessage[stage]}
+        </h1>
       </div>
 
       <section className="flex justify-center gap-2">

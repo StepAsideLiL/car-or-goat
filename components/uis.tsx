@@ -30,7 +30,7 @@ export const Header = ({ children, className = "" }: ChildrenClassname) => {
   return (
     <header
       className={cn(
-        "container flex gap-2 md:w-full py-3 items-center",
+        "container flex gap-2 md:w-full py-3 items-center justify-between",
         className
       )}
     >

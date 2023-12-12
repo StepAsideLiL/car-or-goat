@@ -6,9 +6,7 @@ import { Button } from "@/components/ui/button";
 const HomeNavbar = () => {
   return (
     <Header className="justify-between">
-      <div className="">
-        <LogoLink />
-      </div>
+      <LogoLink />
 
       <div className="">
         <Button asChild>

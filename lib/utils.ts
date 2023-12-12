@@ -17,5 +17,6 @@ export function carGoatArrayGenerator() {
     [0, 0, 1],
   ];
 
-  return getRandomElement(array);
+  // return getRandomElement(array);
+  return [0, 0, 1];
 }
