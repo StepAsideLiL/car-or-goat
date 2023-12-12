@@ -1,5 +1,6 @@
 -- CreateTable
 CREATE TABLE "User" (
+    "id" STRING NOT NULL,
     "userId" STRING NOT NULL,
     "username" STRING NOT NULL,
     "totalPlayed" INT4 NOT NULL,
@@ -9,6 +10,9 @@ CREATE TABLE "User" (
     "winWithoutChange" INT4 NOT NULL,
     "updatedAt" STRING NOT NULL
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_id_key" ON "User"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_userId_key" ON "User"("userId");

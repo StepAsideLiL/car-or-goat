@@ -1,3 +1,5 @@
+"use client";
+
 import { UserScore } from "@/lib/types";
 import { useScoreStore, useStore } from "./store";
 
