@@ -1,4 +1,4 @@
-import VariableStat from "@/components/templates/variable-stat";
+// import VariableStat from "@/components/templates/variable-stat";
 import Score from "@/components/playing-field/score";
 import Sidebar from "./side-bar";
 import { Header, LogoLink } from "@/components/uis";
