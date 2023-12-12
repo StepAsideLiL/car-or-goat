@@ -7,7 +7,11 @@ const LeaderboardPage = async () => {
     <Main>
       <h1 className="text-center text-2xl font-semibold">Leaderboard</h1>
 
-      <section>{users.map()}</section>
+      <section>
+        {users.map((user) => (
+          <div key={user.id}>{user.username}</div>
+        ))}
+      </section>
     </Main>
   );
 };
