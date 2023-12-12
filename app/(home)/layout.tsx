@@ -1,3 +1,4 @@
+import Footer from "@/components/templates/footer";
 import HomeNavbar from "@/components/templates/home-navbar";
 import { Children } from "@/lib/types";
 import { Metadata } from "next";
@@ -12,6 +13,8 @@ const HomeLayout = ({ children }: Children) => {
       <HomeNavbar />
 
       {children}
+
+      <Footer />
     </div>
   );
 };

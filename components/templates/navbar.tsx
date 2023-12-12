@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="flex justify-end items-center gap-2">
         <Score />
 
-        <VariableStat />
+        {/* <VariableStat /> */}
         <Sidebar />
       </div>
     </Header>

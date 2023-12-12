@@ -1,13 +1,91 @@
 import { Button } from "@/components/ui/button";
 import { Main } from "@/components/uis";
+import Image from "next/image";
 import Link from "next/link";
 
 const HomePage = () => {
   return (
-    <Main className="flex items-center justify-center">
-      <Button>
-        <Link href={"/play"}>Play</Link>
-      </Button>
+    <Main className="md:space-y-24 space-y-16 pb-10">
+      <section className="md:pt-20 pt-10 mx-auto max-w-4xl text-center flex justify-center items-center">
+        <div>
+          <h1 className="md:text-4xl text-2xl leading-tight font-medium pb-10">
+            <Link
+              href={"https://en.wikipedia.org/wiki/Monty_Hall_problem"}
+              target="_blank"
+              className="underline"
+            >
+              The Monty Hall problem
+            </Link>{" "}
+            is a famous probability puzzle named after the host of the
+            television game show &rdquo;Let&rsquo;s Make a Deal,&rdquo; Monty
+            Hall.
+          </h1>
+
+          <Button className="md:px-14 md:py-10 px-10 py-7">
+            <Link href={"/play"} className="md:text-3xl text-lg">
+              Play Now
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      <section className="flex justify-center">
+        <Image
+          src={"/goats-on-car.jpeg"}
+          alt="Banner Image"
+          width={1024}
+          height={1024}
+          className="max-w-2xl w-full"
+        />
+      </section>
+
+      <section className="max-w-2xl mx-auto space-y-3">
+        <h1 className="text-xl font-semibold">How to Play</h1>
+
+        <ul className="list-decimal list-inside space-y-2">
+          <li>
+            There are three cards (Card A, Card B, and Card C). Behind one of
+            the cards is a car (the prize you want), and behind the other two
+            cards are goats.
+          </li>
+
+          <li>You choose one of the cards, say Card A.</li>
+
+          <li>
+            The game, who knows what is behind each card, reveals the face of
+            another card, say Card B, showing a goat.
+          </li>
+
+          <li>
+            Now, you are faced with a choice: stick with your original choice
+            (Card A) or switch to the other unopened card (Card C).
+          </li>
+
+          <li>
+            The host flips open the card you selected, and you receive whatever
+            is behind it.
+          </li>
+        </ul>
+      </section>
+
+      <section className="max-w-2xl mx-auto space-y-3">
+        <h1 className="text-xl font-semibold">
+          So?...What is the point of this?
+        </h1>
+
+        <div className="space-y-2">
+          <p>
+            At stage 4, when you change your initial choice, your probability of
+            success increases to 66.66%, compared to the 33.33% probability
+            before.
+          </p>
+
+          <p>
+            So, change your choice and observe how many times you can win with
+            that 66.66% chance.
+          </p>
+        </div>
+      </section>
     </Main>
   );
 };
