@@ -1,13 +1,41 @@
 import { ChildrenClassname } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
-import { HelpCircle } from "lucide-react";
+import { Dices, HelpCircle } from "lucide-react";
 import { GiGoat, GiCityCar } from "react-icons/gi";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Link from "next/link";
+
+export const Logo = () => {
+  return <Dices className="md:w-12 w-6 md:h-12 h-6" />;
+};
+
+export const LogoLink = () => {
+  return (
+    <Link href={"/"}>
+      <Dices className="md:w-12 w-6 md:h-12 h-6" />
+    </Link>
+  );
+};
 
 export const Main = ({ children, className = "" }: ChildrenClassname) => {
   return (
-    <main className={cn("min-h-screen space-y-4", className)}>{children}</main>
+    <main className={cn("min-h-screen space-y-4 container", className)}>
+      {children}
+    </main>
+  );
+};
+
+export const Header = ({ children, className = "" }: ChildrenClassname) => {
+  return (
+    <header
+      className={cn(
+        "container flex gap-2 md:w-full py-3 items-center",
+        className
+      )}
+    >
+      {children}
+    </header>
   );
 };
 

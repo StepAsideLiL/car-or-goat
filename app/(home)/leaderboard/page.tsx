@@ -1,16 +1,17 @@
+import LeaderboardTable from "@/components/leaderboard/table";
+import { LeaderboardTableSkeleton } from "@/components/skeletons";
 import { Main } from "@/components/uis";
-import { leaderboard } from "@/lib/data";
+import { Suspense } from "react";
 
 const LeaderboardPage = async () => {
-  const users = await leaderboard();
   return (
     <Main>
       <h1 className="text-center text-2xl font-semibold">Leaderboard</h1>
 
-      <section>
-        {users.map((user) => (
-          <div key={user.id}>{user.username}</div>
-        ))}
+      <section className="">
+        <Suspense fallback={<LeaderboardTableSkeleton />}>
+          <LeaderboardTable />
+        </Suspense>
       </section>
     </Main>
   );

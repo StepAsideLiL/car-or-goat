@@ -1,3 +1,4 @@
+import HomeNavbar from "@/components/templates/home-navbar";
 import { Children } from "@/lib/types";
 import { Metadata } from "next";
 
@@ -6,7 +7,13 @@ export const metadata: Metadata = {
 };
 
 const HomeLayout = ({ children }: Children) => {
-  return <div>{children}</div>;
+  return (
+    <div>
+      <HomeNavbar />
+
+      {children}
+    </div>
+  );
 };
 
 export default HomeLayout;

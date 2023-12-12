@@ -18,6 +18,7 @@ import { AvatarIcon, SidebarSectionHeader } from "@/components/uis";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import SyncWithUserId from "@/components/forms/sync-id";
+import { Home, Trophy } from "lucide-react";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -43,10 +44,12 @@ const Sidebar = () => {
     {
       title: "Home",
       href: "/",
+      icon: <Home size={"20px"} />,
     },
     {
       title: "Leaderboard",
       href: "/leaderboard",
+      icon: <Trophy size={"20px"} />,
     },
   ];
 
@@ -112,9 +115,10 @@ const Sidebar = () => {
                   <li key={menu.href}>
                     <Link
                       href={menu.href}
-                      className="font-medium text-lg w-full pl-2 p-1 rounded hover:bg-slate-200 inline-block"
+                      className="font-medium text-lg w-full pl-2 p-1 rounded hover:bg-slate-200 flex gap-1 items-center"
                     >
-                      {menu.title}
+                      <span>{menu.icon}</span>
+                      <span>{menu.title}</span>
                     </Link>
                   </li>
                 ))}
