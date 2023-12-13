@@ -77,6 +77,11 @@ const CardSection = ({ cards }: { cards: number[] }) => {
     }
   };
 
+  const generateCardComb = () => {
+    router.refresh();
+    console.log(cards);
+  };
+
   return (
     <section className="space-y-5 w-full">
       <div className="h-20 flex items-start justify-between gap-10">
@@ -116,6 +121,8 @@ const CardSection = ({ cards }: { cards: number[] }) => {
       )}
 
       {stage === 4 && <SetUsername />}
+
+      <Button onClick={generateCardComb}>Random</Button>
     </section>
   );
 };

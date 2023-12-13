@@ -3,7 +3,6 @@ import React from "react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -15,8 +14,6 @@ const LeaderboardTable = async () => {
 
   return (
     <Table>
-      <TableCaption>User Leaderboard</TableCaption>
-
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">Name</TableHead>
