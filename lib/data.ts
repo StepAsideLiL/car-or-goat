@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb";
 import { cache } from "react";
 
-export const leaderboard = cache(async () => {
+export const leaderboard = async () => {
   // await new Promise((resolve) => setTimeout(resolve, 10000));
 
   const users = await prisma.user.findMany({
@@ -11,4 +11,4 @@ export const leaderboard = cache(async () => {
   });
 
   return users;
-});
+};
