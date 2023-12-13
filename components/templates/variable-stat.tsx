@@ -6,7 +6,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
-import { HelpCircle } from "lucide-react";
+import { BarChart } from "lucide-react";
 import { useStore } from "@/lib/store/store";
 
 const VariableStat = () => {
@@ -34,7 +34,7 @@ const VariableStat = () => {
     <HoverCard>
       <HoverCardTrigger>
         <Button variant={"ghost"}>
-          <HelpCircle />
+          <BarChart />
         </Button>
       </HoverCardTrigger>
 
