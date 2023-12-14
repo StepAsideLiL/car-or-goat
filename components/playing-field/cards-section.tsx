@@ -4,18 +4,18 @@ import {
   CardContainer1,
   CardContainer2,
   CardContainer3,
-} from "./card-container";
+} from "@/components/playing-field/card-container";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, RefreshCcw } from "lucide-react";
-import { useStore } from "@/lib/store/store";
+import { useCards, useStore } from "@/lib/store/store";
 import ConfettiRain from "./confetti-rain";
 import { gameWinned } from "@/lib/localStorage";
-import { useRouter } from "next/navigation";
 import { resetStore } from "@/lib/store/store-utils";
 import SetUsername from "@/components/playing-field/set-name";
+import { randomCard } from "@/lib/card-combination-generator";
 
-const CardSection = ({ cards }: { cards: number[] }) => {
-  const router = useRouter();
+const CardSection = () => {
+  const [cards, setCards] = useCards((s) => [s.cards, s.setCards]);
   const indexOfFirstZero = cards.indexOf(0);
   const indexOfOne = cards.indexOf(1);
   const [stage, increaseStage] = useStore((state) => [
@@ -72,14 +72,9 @@ const CardSection = ({ cards }: { cards: number[] }) => {
       }
     }
     if (stage === 4) {
-      router.refresh();
+      setCards(randomCard(cards));
       resetStore();
     }
-  };
-
-  const generateCardComb = () => {
-    router.refresh();
-    console.log(cards);
   };
 
   return (
@@ -121,8 +116,6 @@ const CardSection = ({ cards }: { cards: number[] }) => {
       )}
 
       {stage === 4 && <SetUsername />}
-
-      <Button onClick={generateCardComb}>Random</Button>
     </section>
   );
 };

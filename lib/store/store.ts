@@ -1,5 +1,15 @@
 import { create } from "zustand";
 
+type Cards = {
+  cards: number[];
+  setCards: (cards: number[]) => void;
+};
+
+export const useCards = create<Cards>((set) => ({
+  cards: [],
+  setCards: (cards) => set(() => ({ cards: cards })),
+}));
+
 type Store = {
   stage: number;
   increaseStage: () => void;
