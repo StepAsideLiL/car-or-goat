@@ -1,8 +1,8 @@
 import prisma from "@/lib/prismadb";
-import { cache } from "react";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const leaderboard = async () => {
-  // await new Promise((resolve) => setTimeout(resolve, 10000));
+  noStore();
 
   const users = await prisma.user.findMany({
     orderBy: {
