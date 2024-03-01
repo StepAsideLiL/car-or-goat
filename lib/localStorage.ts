@@ -2,7 +2,6 @@
 
 import { useScoreStore, useStore } from "@/lib/store/store";
 import { customAlphabet } from "nanoid";
-import { updateAndCreateUser } from "@/lib/actions";
 import { UserScore } from "@/lib/types";
 import { syncUserScoreAndInfo } from "./store/store-utils";
 
@@ -64,8 +63,6 @@ export const setUsernameAndId = (username: string) => {
 
     useScoreStore.getState().setUsername(username);
     useScoreStore.getState().setUserId(userId);
-
-    updateAndCreateUser(updatedScoreDB);
   }
 };
 
@@ -113,8 +110,6 @@ export const gameWinned = (win: boolean = false) => {
       } else {
         useScoreStore.getState().incWinWithoutChange();
       }
-
-      updateAndCreateUser(updatedScoreDB);
     } else {
       const updatedScoreDB = {
         ...scoreDB,
@@ -130,8 +125,6 @@ export const gameWinned = (win: boolean = false) => {
       if (isChanged) {
         useScoreStore.getState().incTotalChange();
       }
-
-      updateAndCreateUser(updatedScoreDB);
     }
   }
 };
