@@ -1,7 +1,6 @@
 import HowToPlay from "@/components/sections/how-to-play";
 import { Button } from "@/components/ui/button";
 import { Main } from "@/components/uis";
-import Image from "next/image";
 import Link from "next/link";
 
 const HomePage = () => {
@@ -28,16 +27,6 @@ const HomePage = () => {
             </Link>
           </Button>
         </div>
-      </section>
-
-      <section className="flex justify-center">
-        <Image
-          src={"/goats-on-car.jpeg"}
-          alt="Banner Image"
-          width={1024}
-          height={1024}
-          className="max-w-2xl w-full"
-        />
       </section>
 
       <HowToPlay />
