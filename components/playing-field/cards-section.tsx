@@ -11,7 +11,6 @@ import { useCards, useStore } from "@/lib/store/store";
 import ConfettiRain from "./confetti-rain";
 import { gameWinned } from "@/lib/localStorage";
 import { resetStore } from "@/lib/store/store-utils";
-import SetUsername from "@/components/playing-field/set-name";
 import { randomCard } from "@/lib/card-combination-generator";
 
 const CardSection = () => {
@@ -114,8 +113,6 @@ const CardSection = () => {
           <ConfettiRain />
         </div>
       )}
-
-      {stage === 4 && <SetUsername />}
     </section>
   );
 };
