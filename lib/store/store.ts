@@ -67,16 +67,12 @@ export const useStore = create<Store>((set) => ({
 }));
 
 type ScoreStore = {
-  username: string;
-  userId: string;
   totalPlayed: number;
   totalWin: number;
   totalChange: number;
   winWithChange: number;
   winWithoutChange: number;
   updatedAt: string;
-  setUsername: (username: string) => void;
-  setUserId: (userId: string) => void;
   setTotalPlayed: (totalPlayed: number) => void;
   setTotalWin: (totalWin: number) => void;
   setTotalChange: (totalChange: number) => void;
@@ -91,16 +87,12 @@ type ScoreStore = {
 };
 
 export const useScoreStore = create<ScoreStore>((set) => ({
-  username: "",
-  userId: "",
   totalPlayed: 0,
   totalWin: 0,
   totalChange: 0,
   winWithChange: 0,
   winWithoutChange: 0,
   updatedAt: "",
-  setUsername: (username) => set(() => ({ username: username })),
-  setUserId: (userId) => set(() => ({ userId: userId })),
   setTotalPlayed: (totalPlayed) => set(() => ({ totalPlayed: totalPlayed })),
   setTotalWin: (totalWin) => set(() => ({ totalWin: totalWin })),
   setTotalChange: (totalChange) => set(() => ({ totalChange: totalChange })),
