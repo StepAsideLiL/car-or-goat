@@ -29,11 +29,11 @@ const CardSection = () => {
   const seletectedCard = useStore((state) => state.selectedCard);
   const item = useStore((state) => state.selectedItem);
   const stageMessage = [
-    "Pick a card, one of these card contains a Car, others contain one Goat each.",
+    'Pick a card, one of these card contains a "Car", others contain one "Goat".',
     "Revel a card.",
-    "Here is a Goat card.",
+    'Here is a "Goat" card.',
     "Would you like to change your initial card?",
-    item === 1 ? "You win a Car" : "You got a Goat",
+    item === 1 ? 'You win a "Car"' : 'You got a "Goat"',
   ];
 
   const handleNextBtn = () => {
