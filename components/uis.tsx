@@ -60,24 +60,3 @@ export const GoatIcon = () => {
 export const CarIcon = () => {
   return <GiCityCar className="md:w-28 md:h-28 w-14 h-14" />;
 };
-
-export const AvatarIcon = ({ username }: { username: string }) => {
-  return (
-    <Avatar>
-      <AvatarFallback>
-        {username === "" ? "U" : username[0].toUpperCase()}
-      </AvatarFallback>
-    </Avatar>
-  );
-};
-
-export const SidebarSectionHeader = ({
-  children,
-  className = "",
-}: ChildrenClassname) => {
-  return (
-    <h1 className={cn("text-lg font-medium text-muted-foreground", className)}>
-      {children}
-    </h1>
-  );
-};
