@@ -3,7 +3,6 @@ import "./globals.css";
 import { inter } from "@/lib/fonts";
 import { Children } from "@/lib/types";
 import InitiateStore from "@/components/templates/initiate-store";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: {
@@ -20,8 +19,6 @@ export default function RootLayout({ children }: Children) {
         <InitiateStore />
 
         {children}
-
-        <SpeedInsights />
       </body>
     </html>
   );
