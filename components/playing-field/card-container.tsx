@@ -34,7 +34,7 @@ export const CardContainer1 = ({ cardValue }: { cardValue: number }) => {
   };
 
   return (
-    <div onClick={handleClick} className="w-full">
+    <div onClick={handleClick} className="w-full cursor-pointer">
       <PlayCard className={cn(selected === 0 && "border-4 border-red-600")}>
         {show ? (
           cardValue === 1 ? (
@@ -84,7 +84,7 @@ export const CardContainer2 = ({ cardValue }: { cardValue: number }) => {
   };
 
   return (
-    <div onClick={handleClick} className="w-full">
+    <div onClick={handleClick} className="w-full cursor-pointer">
       <PlayCard className={cn(selected === 1 && "border-4 border-red-600")}>
         {show ? (
           cardValue === 1 ? (
@@ -134,7 +134,7 @@ export const CardContainer3 = ({ cardValue }: { cardValue: number }) => {
   };
 
   return (
-    <div onClick={handleClick} className="w-full">
+    <div onClick={handleClick} className="w-full cursor-pointer">
       <PlayCard className={cn(selected === 2 && "border-4 border-red-600")}>
         {show ? (
           cardValue === 1 ? (
