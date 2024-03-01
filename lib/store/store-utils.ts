@@ -25,8 +25,6 @@ export const resetUserScoreAndInfo = () => {
 
 export const syncUserScoreAndInfo = (user: UserScore) => {
   const {
-    username,
-    userId,
     totalPlayed,
     totalWin,
     totalChange,
