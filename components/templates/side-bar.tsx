@@ -17,8 +17,7 @@ import { useRouter } from "next/navigation";
 import { AvatarIcon, SidebarSectionHeader } from "@/components/uis";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import SyncWithUserId from "@/components/forms/sync-id";
-import { Home, Trophy } from "lucide-react";
+import { Home } from "lucide-react";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -45,11 +44,6 @@ const Sidebar = () => {
       title: "Home",
       href: "/",
       icon: <Home size={"20px"} />,
-    },
-    {
-      title: "Leaderboard",
-      href: "/leaderboard",
-      icon: <Trophy size={"20px"} />,
     },
   ];
 
@@ -92,16 +86,6 @@ const Sidebar = () => {
             </div>
 
             <Button onClick={handleReset}>Reset</Button>
-          </section>
-
-          <Separator className="my-2" />
-
-          <section className="space-y-2 pb-2">
-            <SidebarSectionHeader>
-              Sync with the Database with your user id
-            </SidebarSectionHeader>
-
-            <SyncWithUserId />
           </section>
 
           <Separator className="my-2" />
