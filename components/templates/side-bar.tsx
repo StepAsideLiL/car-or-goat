@@ -19,23 +19,14 @@ import { Home, Info } from "lucide-react";
 
 const Sidebar = () => {
   const router = useRouter();
-  const [
-    username,
-    userId,
-    played,
-    totalWin,
-    changed,
-    winningChange,
-    winningWithoutChange,
-  ] = useScoreStore((s) => [
-    s.username,
-    s.userId,
-    s.totalPlayed,
-    s.totalWin,
-    s.totalChange,
-    s.winWithChange,
-    s.winWithoutChange,
-  ]);
+  const [played, totalWin, changed, winningChange, winningWithoutChange] =
+    useScoreStore((s) => [
+      s.totalPlayed,
+      s.totalWin,
+      s.totalChange,
+      s.winWithChange,
+      s.winWithoutChange,
+    ]);
 
   const sideMenu = [
     {

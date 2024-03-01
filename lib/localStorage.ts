@@ -1,7 +1,6 @@
 "use client";
 
 import { useScoreStore, useStore } from "@/lib/store/store";
-import { customAlphabet } from "nanoid";
 import { UserScore } from "@/lib/types";
 import { syncUserScoreAndInfo } from "./store/store-utils";
 
@@ -16,7 +15,6 @@ const scoreDB = {
   winWithoutChange: 0,
   updatedAt: "",
 };
-const nanoid = customAlphabet("0123456789abcdefghijklmnopqrstuvwxyz", 10);
 
 const stringifyJson = (obj: UserScore): string => {
   return JSON.stringify(obj);
@@ -46,23 +44,6 @@ export const getUserScore = (): UserScore => {
 export const clearScore = () => {
   if (typeof window !== "undefined" && window.localStorage) {
     localStorage.removeItem(localStorageKey);
-  }
-};
-
-export const setUsernameAndId = (username: string) => {
-  const userId = nanoid();
-  if (typeof window !== "undefined" && window.localStorage) {
-    const scoreDB = getUserScore();
-    const updatedScoreDB = {
-      ...scoreDB,
-      username: username,
-      userId: userId,
-    };
-
-    localStorage.setItem(localStorageKey, stringifyJson(updatedScoreDB));
-
-    useScoreStore.getState().setUsername(username);
-    useScoreStore.getState().setUserId(userId);
   }
 };
 
