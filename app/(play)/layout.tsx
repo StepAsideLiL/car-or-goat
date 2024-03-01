@@ -1,4 +1,3 @@
-import BottomStat from "@/components/templates/variable-stat";
 import Navbar from "@/components/templates/navbar";
 import { Children } from "@/lib/types";
 import { Metadata } from "next";
@@ -13,8 +12,6 @@ const PlayboardLayout = ({ children }: Children) => {
       <Navbar />
 
       {children}
-
-      <div className="fixed bottom-4 right-4"></div>
     </div>
   );
 };
