@@ -6,8 +6,6 @@ import { syncUserScoreAndInfo } from "./store/store-utils";
 
 export const localStorageKey = "carGoatDB";
 const scoreDB = {
-  username: "",
-  userId: "",
   totalPlayed: 0,
   totalWin: 0,
   totalChange: 0,

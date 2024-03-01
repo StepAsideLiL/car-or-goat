@@ -12,8 +12,6 @@ export type ChildrenClassname = {
 };
 
 export type UserScore = {
-  username: string;
-  userId: string;
   totalPlayed: number;
   totalWin: number;
   totalChange: number;
