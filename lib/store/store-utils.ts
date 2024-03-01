@@ -15,8 +15,6 @@ export const resetStore = () => {
 };
 
 export const resetUserScoreAndInfo = () => {
-  useScoreStore.getState().setUsername("");
-  useScoreStore.getState().setUserId("");
   useScoreStore.getState().setTotalPlayed(0);
   useScoreStore.getState().setTotalWin(0);
   useScoreStore.getState().setTotalChange(0);
@@ -37,8 +35,6 @@ export const syncUserScoreAndInfo = (user: UserScore) => {
     updatedAt,
   } = user;
 
-  useScoreStore.getState().setUsername(username);
-  useScoreStore.getState().setUserId(userId);
   useScoreStore.getState().setTotalPlayed(totalPlayed);
   useScoreStore.getState().setTotalWin(totalWin);
   useScoreStore.getState().setTotalChange(totalChange);
